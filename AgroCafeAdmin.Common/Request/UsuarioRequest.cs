@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using TallerUG.Common;
 
-namespace AgroCafeAdmin.Core.Models.Seguridad
+namespace AgroCafeAdmin.Common.Request
 {
-    public class Usuario
+    public class UsuarioRequest : BaseRequest
     {
         public int Id { get; set; }
         public string Codigo { get; set; } = string.Empty;
@@ -16,7 +12,6 @@ namespace AgroCafeAdmin.Core.Models.Seguridad
         public string Cedula { get; set; } = string.Empty;
         public string Contrasenia { get; set; } = string.Empty;
         public int RolId { get; set; }
-        public Roles Rol { get; set; }
         public bool Anulado { get; set; } = true;
         public DateTime FechaCreacion { get; set; } = DateTime.UtcNow;
         public DateTime? FechaActualizacion { get; set; }

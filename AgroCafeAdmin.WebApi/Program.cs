@@ -1,4 +1,6 @@
 using AgroCafeAdmin.Data.Data;
+using AgroCafeAdmin.Data.Injection;
+using AgroCafeAdmin.Service.Seguridad;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -13,6 +15,13 @@ builder.Services.AddDbContext<AgroCafeDbContext>(options =>
         builder.Configuration.GetConnectionString("DefaultConnection"),
         sqlServerOptions => sqlServerOptions.MigrationsAssembly("AgroCafeAdmin.Data")
     ));
+
+builder.Services.AddDataLayer(builder.Configuration);
+
+
+// Agregar capa de servicios
+builder.Services.AddScoped<IAutorizacionService, AutorizacionService>();
+builder.Services.AddScoped<ITokenService, TokenService>(); // Asegúrate de tener esta línea
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
