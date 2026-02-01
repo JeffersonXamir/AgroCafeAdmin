@@ -21,6 +21,7 @@ namespace AgroCafeAdmin.Data.Injection
 
             // Registro directo de repositorios específicos
             services.AddScoped<IAutorizacionRepository, AutorizacionRepository>();
+            services.AddScoped<IUsuarioRepository, UsuarioRepository>();
             //services.AddScoped<LoteRepository>(); // Ejemplo de otro repo
 
             return services;
