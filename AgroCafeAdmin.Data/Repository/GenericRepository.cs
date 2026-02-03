@@ -50,6 +50,8 @@ namespace AgroCafeAdmin.Data.Repository
                         {
                             result.Data.Add(MapReaderToEntity<T>(reader));
                         }
+                        result.Success = true;
+                        result.Mensaje = "OK";
                     }
 
                     // Procesar errores del SP
