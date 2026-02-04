@@ -12,7 +12,7 @@ namespace AgroCafeAdmin.Common.Request
         public string? Cedula { get; set; } = string.Empty;
         public string? Contrasenia { get; set; } = string.Empty;
         public int? RolId { get; set; }
-        public bool? Anulado { get; set; } = true;
+        public bool? Anulado { get; set; } = false;
         public DateTime? FechaCreacion { get; set; } = DateTime.UtcNow;
         public DateTime? FechaActualizacion { get; set; }
     }
