@@ -1,5 +1,6 @@
 using AgroCafeAdmin.Data.Data;
 using AgroCafeAdmin.Data.Injection;
+using AgroCafeAdmin.Service.Productores;
 using AgroCafeAdmin.Service.Seguridad;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
@@ -54,6 +55,7 @@ builder.Services.AddDataLayer(builder.Configuration);
 builder.Services.AddScoped<IAutorizacionService, AutorizacionService>();
 builder.Services.AddScoped<IUsuarioService, UsuarioService>();
 builder.Services.AddScoped<IRolesService, RolesService>();
+builder.Services.AddScoped<IProductorService, ProductorService>();
 builder.Services.AddScoped<ITokenService, TokenService>(); // Asegúrate de tener esta línea
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

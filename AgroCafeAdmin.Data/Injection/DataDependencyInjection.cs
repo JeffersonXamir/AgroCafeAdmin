@@ -1,4 +1,5 @@
 ﻿using AgroCafeAdmin.Data.Repository;
+using AgroCafeAdmin.Data.Repository.Productores;
 using AgroCafeAdmin.Data.Repository.Seguridad;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -23,6 +24,7 @@ namespace AgroCafeAdmin.Data.Injection
             services.AddScoped<IAutorizacionRepository, AutorizacionRepository>();
             services.AddScoped<IUsuarioRepository, UsuarioRepository>();
             services.AddScoped<IRolesRepository, RolesRepository>();
+            services.AddScoped<IProductorRepository, ProductorRepository>();
             //services.AddScoped<LoteRepository>(); // Ejemplo de otro repo
 
             return services;

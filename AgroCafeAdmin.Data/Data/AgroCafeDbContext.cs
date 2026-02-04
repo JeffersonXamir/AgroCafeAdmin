@@ -1,4 +1,5 @@
-﻿using AgroCafeAdmin.Core.Models.Seguridad;
+﻿using AgroCafeAdmin.Core.Models.Productores;
+using AgroCafeAdmin.Core.Models.Seguridad;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -16,6 +17,8 @@ namespace AgroCafeAdmin.Data.Data
         }
 
         public DbSet<Usuario> Usuarios { get; set; }
+        public DbSet<Roles> Roles { get; set; }
+        public DbSet<Productor> Productores { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -32,6 +35,13 @@ namespace AgroCafeAdmin.Data.Data
             modelBuilder.Entity<Roles>(entity =>
             {
                 entity.ToTable("SEC_Roles");
+                entity.HasKey(u => u.Id);
+
+            });
+
+            modelBuilder.Entity<Productor>(entity =>
+            {
+                entity.ToTable("PRO_Productores");
                 entity.HasKey(u => u.Id);
 
             });
