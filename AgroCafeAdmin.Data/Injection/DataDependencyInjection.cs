@@ -25,6 +25,7 @@ namespace AgroCafeAdmin.Data.Injection
             services.AddScoped<IUsuarioRepository, UsuarioRepository>();
             services.AddScoped<IRolesRepository, RolesRepository>();
             services.AddScoped<IProductorRepository, ProductorRepository>();
+            services.AddScoped<IFincaRepository, FincaRepository>();
             //services.AddScoped<LoteRepository>(); // Ejemplo de otro repo
 
             return services;

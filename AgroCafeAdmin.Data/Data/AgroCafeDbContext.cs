@@ -19,6 +19,7 @@ namespace AgroCafeAdmin.Data.Data
         public DbSet<Usuario> Usuarios { get; set; }
         public DbSet<Roles> Roles { get; set; }
         public DbSet<Productor> Productores { get; set; }
+        public DbSet<Finca> Fincas { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -42,6 +43,13 @@ namespace AgroCafeAdmin.Data.Data
             modelBuilder.Entity<Productor>(entity =>
             {
                 entity.ToTable("PRO_Productores");
+                entity.HasKey(u => u.Id);
+
+            });
+
+            modelBuilder.Entity<Finca>(entity =>
+            {
+                entity.ToTable("PRO_Fincas");
                 entity.HasKey(u => u.Id);
 
             });

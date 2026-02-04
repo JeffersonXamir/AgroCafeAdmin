@@ -56,6 +56,7 @@ builder.Services.AddScoped<IAutorizacionService, AutorizacionService>();
 builder.Services.AddScoped<IUsuarioService, UsuarioService>();
 builder.Services.AddScoped<IRolesService, RolesService>();
 builder.Services.AddScoped<IProductorService, ProductorService>();
+builder.Services.AddScoped<IFincaService, FincaService>();
 builder.Services.AddScoped<ITokenService, TokenService>(); // Asegúrate de tener esta línea
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
