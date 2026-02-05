@@ -1,4 +1,5 @@
 ﻿using AgroCafeAdmin.Data.Repository;
+using AgroCafeAdmin.Data.Repository.Bitacoras;
 using AgroCafeAdmin.Data.Repository.Productores;
 using AgroCafeAdmin.Data.Repository.Seguridad;
 using Microsoft.Extensions.Configuration;
@@ -28,6 +29,9 @@ namespace AgroCafeAdmin.Data.Injection
             services.AddScoped<IFincaRepository, FincaRepository>();
             services.AddScoped<IVariedadRepository, VariedadRepository>();
             services.AddScoped<IParcelaRepository, ParcelaRepository>();
+            services.AddScoped<ILaborRepository, LaborRepository>();
+            services.AddScoped<IPlagasRepository, PlagasRepository>();
+            services.AddScoped<IBitacoraRepository, BitacoraRepository>();
             //services.AddScoped<LoteRepository>(); // Ejemplo de otro repo
 
             return services;

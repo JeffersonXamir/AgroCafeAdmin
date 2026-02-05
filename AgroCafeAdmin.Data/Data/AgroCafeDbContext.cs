@@ -1,4 +1,5 @@
-﻿using AgroCafeAdmin.Core.Models.Productores;
+﻿using AgroCafeAdmin.Core.Models.Bitacoras;
+using AgroCafeAdmin.Core.Models.Productores;
 using AgroCafeAdmin.Core.Models.Seguridad;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -16,18 +17,23 @@ namespace AgroCafeAdmin.Data.Data
         {
         }
 
+        #region DbSet
         public DbSet<Usuario> Usuarios { get; set; }
         public DbSet<Roles> Roles { get; set; }
         public DbSet<Productor> Productores { get; set; }
         public DbSet<Finca> Fincas { get; set; }
         public DbSet<Variedad> Variedad { get; set; }
         public DbSet<Parcela> Parcelas { get; set; }
+        public DbSet<Labor> Labores { get; set; }
+        public DbSet<Plaga> Plagas { get; set; }
+        public DbSet<Bitacora> Bitacoras { get; set; }
+        #endregion
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
 
-            #region DbSet
+            #region Table Name
 
             // Configuración de la tabla Usuarios
             modelBuilder.Entity<Usuario>(entity =>
@@ -71,6 +77,28 @@ namespace AgroCafeAdmin.Data.Data
                 entity.HasKey(u => u.Id);
 
             });
+
+            modelBuilder.Entity<Labor>(entity =>
+            {
+                entity.ToTable("BIT_Labores");
+                entity.HasKey(u => u.Id);
+
+            });
+
+            modelBuilder.Entity<Plaga>(entity =>
+            {
+                entity.ToTable("BIT_Plagas");
+                entity.HasKey(u => u.Id);
+
+            });
+
+            modelBuilder.Entity<Bitacora>(entity =>
+            {
+                entity.ToTable("BIT_Bitacoras");
+                entity.HasKey(u => u.Id);
+
+            });
+
             #endregion
 
             #region Semillas
@@ -93,6 +121,22 @@ namespace AgroCafeAdmin.Data.Data
                 new Usuario { Id = 1, Codigo = "Admin", Nombre = "Administrador", Apellido = "Sistemas", Email = "AgroCafe@gmail.com", Cedula = "0924876014001", Contrasenia = "123456", RolId = 1, Anulado = false, FechaCreacion = DateTime.Parse("2026/02/04"), FechaActualizacion = DateTime.Parse("2026/02/04") }
             );
 
+            // Seed Labores
+            modelBuilder.Entity<Labor>().HasData(
+                new Labor { Id = 1, Nombre = "Siembra" },
+                new Labor { Id = 2, Nombre = "Fertilización" },
+                new Labor { Id = 3, Nombre = "Poda" },
+                new Labor { Id = 4, Nombre = "Deshierbe" },
+                new Labor { Id = 5, Nombre = "Cosecha" }
+            );
+
+            // Seed Plagas
+            modelBuilder.Entity<Plaga>().HasData(
+                new Plaga { Id = 1, Nombre = "Roya" },
+                new Plaga { Id = 2, Nombre = "Broca" },
+                new Plaga { Id = 3, Nombre = "Ojo de Gallo" },
+                new Plaga { Id = 4, Nombre = "Minador" }
+            );
 
             #endregion
         }
