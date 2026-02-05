@@ -4,6 +4,7 @@ using AgroCafeAdmin.Data.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AgroCafeAdmin.Data.Migrations
 {
     [DbContext(typeof(AgroCafeDbContext))]
-    partial class AgroCafeDbContextModelSnapshot : ModelSnapshot
+    [Migration("20260205030604_AddRegistrosRolesVariedad")]
+    partial class AddRegistrosRolesVariedad
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -288,22 +291,6 @@ namespace AgroCafeAdmin.Data.Migrations
                     b.HasIndex("RolId");
 
                     b.ToTable("SEC_Usuarios", (string)null);
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Anulado = false,
-                            Apellido = "Sistemas",
-                            Cedula = "0924876014001",
-                            Codigo = "Admin",
-                            Contrasenia = "123456",
-                            Email = "AgroCafe@gmail.com",
-                            FechaActualizacion = new DateTime(2026, 2, 4, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            FechaCreacion = new DateTime(2026, 2, 4, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Nombre = "Administrador",
-                            RolId = 1
-                        });
                 });
 
             modelBuilder.Entity("AgroCafeAdmin.Core.Models.Productores.Finca", b =>

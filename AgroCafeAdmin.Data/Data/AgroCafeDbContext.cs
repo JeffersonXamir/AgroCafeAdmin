@@ -27,6 +27,8 @@ namespace AgroCafeAdmin.Data.Data
         {
             base.OnModelCreating(modelBuilder);
 
+            #region DbSet
+
             // Configuración de la tabla Usuarios
             modelBuilder.Entity<Usuario>(entity =>
             {
@@ -69,6 +71,30 @@ namespace AgroCafeAdmin.Data.Data
                 entity.HasKey(u => u.Id);
 
             });
+            #endregion
+
+            #region Semillas
+            // Datos semilla (seed data)
+            modelBuilder.Entity<Variedad>().HasData(
+                new Variedad { Id = 1, Nombre = "Arábica", Anulado = false },
+                new Variedad { Id = 2, Nombre = "Robusta", Anulado = false },
+                new Variedad { Id = 3, Nombre = "Caturra", Anulado = false },
+                new Variedad { Id = 4, Nombre = "Borbón", Anulado = false },
+                new Variedad { Id = 5, Nombre = "Típica", Anulado = false }
+            );
+
+            modelBuilder.Entity<Roles>().HasData(
+                new Roles { Id = 1, Codigo = "0001", Nombre = "Administrador", Anulado = false },
+                new Roles { Id = 2, Codigo = "0002", Nombre = "Productor", Anulado = false },
+                new Roles { Id = 3, Codigo = "0003", Nombre = "Cliente", Anulado = false }
+            );
+
+            modelBuilder.Entity<Usuario>().HasData(
+                new Usuario { Id = 1, Codigo = "Admin", Nombre = "Administrador", Apellido = "Sistemas", Email = "AgroCafe@gmail.com", Cedula = "0924876014001", Contrasenia = "123456", RolId = 1, Anulado = false, FechaCreacion = DateTime.Parse("2026/02/04"), FechaActualizacion = DateTime.Parse("2026/02/04") }
+            );
+
+
+            #endregion
         }
     }
 }
