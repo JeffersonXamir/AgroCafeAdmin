@@ -1,4 +1,5 @@
 ﻿using AgroCafeAdmin.Core.Models.Bitacoras;
+using AgroCafeAdmin.Core.Models.Inventario;
 using AgroCafeAdmin.Core.Models.Productores;
 using AgroCafeAdmin.Core.Models.Seguridad;
 using Microsoft.EntityFrameworkCore;
@@ -27,6 +28,10 @@ namespace AgroCafeAdmin.Data.Data
         public DbSet<Labor> Labores { get; set; }
         public DbSet<Plaga> Plagas { get; set; }
         public DbSet<Bitacora> Bitacoras { get; set; }
+        public DbSet<Unidad> Unidades { get; set; }
+        public DbSet<Calidad> Calidad { get; set; }
+        public DbSet<Lote> Lotes { get; set; }
+        public DbSet<Movimiento> Movimientos { get; set; }
         #endregion
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -99,6 +104,34 @@ namespace AgroCafeAdmin.Data.Data
 
             });
 
+            modelBuilder.Entity<Calidad>(entity =>
+            {
+                entity.ToTable("INV_Calidades");
+                entity.HasKey(u => u.Id);
+
+            });
+
+            modelBuilder.Entity<Unidad>(entity =>
+            {
+                entity.ToTable("INV_Unidades");
+                entity.HasKey(u => u.Id);
+
+            });
+
+            modelBuilder.Entity<Lote>(entity =>
+            {
+                entity.ToTable("INV_Lotes");
+                entity.HasKey(u => u.Id);
+
+            });
+
+            modelBuilder.Entity<Movimiento>(entity =>
+            {
+                entity.ToTable("INV_Movimientos");
+                entity.HasKey(u => u.Id);
+
+            });
+
             #endregion
 
             #region Semillas
@@ -136,6 +169,19 @@ namespace AgroCafeAdmin.Data.Data
                 new Plaga { Id = 2, Nombre = "Broca" },
                 new Plaga { Id = 3, Nombre = "Ojo de Gallo" },
                 new Plaga { Id = 4, Nombre = "Minador" }
+            );
+
+            // En OnModelCreating:
+            modelBuilder.Entity<Calidad>().HasData(
+                new Calidad { Id = 1, Nombre = "Primera" },
+                new Calidad { Id = 2, Nombre = "Segunda" },
+                new Calidad { Id = 3, Nombre = "Descarte" }
+            );
+
+            modelBuilder.Entity<Unidad>().HasData(
+                new Unidad { Id = 1, Codigo = "qq", Nombre = "Quintales" },
+                new Unidad { Id = 2, Codigo = "kg", Nombre = "Kilos" },
+                new Unidad { Id = 3, Codigo = "lb", Nombre = "Libras" }
             );
 
             #endregion

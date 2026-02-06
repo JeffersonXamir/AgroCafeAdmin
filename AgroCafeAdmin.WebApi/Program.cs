@@ -1,6 +1,7 @@
 using AgroCafeAdmin.Data.Data;
 using AgroCafeAdmin.Data.Injection;
 using AgroCafeAdmin.Service.Bitacoras;
+using AgroCafeAdmin.Service.Inventario;
 using AgroCafeAdmin.Service.Productores;
 using AgroCafeAdmin.Service.Seguridad;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -63,6 +64,9 @@ builder.Services.AddScoped<IParcelaService, ParcelaService>();
 builder.Services.AddScoped<ILaborService, LaborService>();
 builder.Services.AddScoped<IPlagasService, PlagasService>();
 builder.Services.AddScoped<IBitacoraService, BitacoraService>();
+builder.Services.AddScoped<ICalidadService, CalidadService>();
+builder.Services.AddScoped<IUnidadService, UnidadService>();
+builder.Services.AddScoped<ILoteService, LoteService>();
 builder.Services.AddScoped<ITokenService, TokenService>(); // Asegúrate de tener esta línea
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
