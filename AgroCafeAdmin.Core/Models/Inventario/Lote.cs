@@ -32,5 +32,11 @@ namespace AgroCafeAdmin.Core.Models.Inventario
 
         [MaxLength(500)] public string? Notas { get; set; }
         public bool Anulado { get; set; } = false;
+
+        [NotMapped]
+        public string? CalidadNombre { get; set; }
+
+        [NotMapped]
+        public string? UnidadCodigo { get; set; }
     }
 }

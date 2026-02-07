@@ -9,9 +9,10 @@ using System.Xml.Linq;
 
 namespace AgroCafeAdmin.Service.Inventario
 {
-    public interface ILoteService
+    public interface IInventarioService
     {
         Task<SpResult<List<Lote>>> GetLoteAsync(string transaccion, XDocument xml);
         Task<SpResult<Lote>> SetLoteAsync(string transaccion, XDocument xml);
+        Task<SpResult<List<Movimiento>>> GetMovimientosAsync(string transaccion, XDocument xml);
     }
 }

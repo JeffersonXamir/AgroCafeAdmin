@@ -5,9 +5,9 @@ using System.Xml.Linq;
 
 namespace AgroCafeAdmin.Data.Repository.Inventario
 {
-    public class LoteRepository : GenericRepository, ILoteRepository
+    public class InventarioRepository : GenericRepository, IInventarioRepository
     {
-        public LoteRepository(AgroCafeDbContext context) : base(context) { }
+        public InventarioRepository(AgroCafeDbContext context) : base(context) { }
 
         public async Task<SpResult<List<Lote>>> GetLotes(string transaccion, XDocument xml)
         {
@@ -19,6 +19,12 @@ namespace AgroCafeAdmin.Data.Repository.Inventario
         {
             var parameters = new Dictionary<string, object> { { "@iTransaccion", transaccion }, { "@iXML", xml.ToString() } };
             return await ExecuteSingleAsync<Lote>("sp_SetLote", parameters);
+        }
+
+        public async Task<SpResult<List<Movimiento>>> GetMovimientos(string transaccion, XDocument xml)
+        {
+            var parameters = new Dictionary<string, object> { { "@iTransaccion", transaccion }, { "@iXML", xml.ToString() } };
+            return await ExecuteListAsync<Movimiento>("sp_GetMovimientos", parameters);
         }
     }
 }
