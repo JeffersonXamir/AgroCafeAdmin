@@ -1,6 +1,7 @@
 ﻿using AgroCafeAdmin.Core.Models.Bitacoras;
 using AgroCafeAdmin.Core.Models.Clientes;
 using AgroCafeAdmin.Core.Models.Inventario;
+using AgroCafeAdmin.Core.Models.Pedidos;
 using AgroCafeAdmin.Core.Models.Productores;
 using AgroCafeAdmin.Core.Models.Seguridad;
 using Microsoft.EntityFrameworkCore;
@@ -34,6 +35,8 @@ namespace AgroCafeAdmin.Data.Data
         public DbSet<Lote> Lotes { get; set; }
         public DbSet<Movimiento> Movimientos { get; set; }
         public DbSet<Cliente> Clientes { get; set; }
+        public DbSet<Pedido> Pedidos { get; set; }
+        public DbSet<DetallePedido> PedidosDetalles { get; set; }
         #endregion
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -137,6 +140,20 @@ namespace AgroCafeAdmin.Data.Data
             modelBuilder.Entity<Cliente>(entity =>
             {
                 entity.ToTable("CLI_Clientes");
+                entity.HasKey(u => u.Id);
+
+            });
+
+            modelBuilder.Entity<Pedido>(entity =>
+            {
+                entity.ToTable("VEN_PEDIDOS");
+                entity.HasKey(u => u.Id);
+
+            });
+
+            modelBuilder.Entity<DetallePedido>(entity =>
+            {
+                entity.ToTable("VEN_DETALLES");
                 entity.HasKey(u => u.Id);
 
             });
