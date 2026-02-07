@@ -1,4 +1,5 @@
 ﻿using AgroCafeAdmin.Core.Models.Bitacoras;
+using AgroCafeAdmin.Core.Models.Clientes;
 using AgroCafeAdmin.Core.Models.Inventario;
 using AgroCafeAdmin.Core.Models.Productores;
 using AgroCafeAdmin.Core.Models.Seguridad;
@@ -32,6 +33,7 @@ namespace AgroCafeAdmin.Data.Data
         public DbSet<Calidad> Calidad { get; set; }
         public DbSet<Lote> Lotes { get; set; }
         public DbSet<Movimiento> Movimientos { get; set; }
+        public DbSet<Cliente> Clientes { get; set; }
         #endregion
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -132,6 +134,13 @@ namespace AgroCafeAdmin.Data.Data
 
             });
 
+            modelBuilder.Entity<Cliente>(entity =>
+            {
+                entity.ToTable("CLI_Clientes");
+                entity.HasKey(u => u.Id);
+
+            });
+
             #endregion
 
             #region Semillas
@@ -182,6 +191,10 @@ namespace AgroCafeAdmin.Data.Data
                 new Unidad { Id = 1, Codigo = "qq", Nombre = "Quintales" },
                 new Unidad { Id = 2, Codigo = "kg", Nombre = "Kilos" },
                 new Unidad { Id = 3, Codigo = "lb", Nombre = "Libras" }
+            );
+
+            modelBuilder.Entity<Cliente>().HasData(
+               new Cliente { Id = 1, Ruc = "9999999999", RazonSocial = "Consumidor Final", Email = "AgroCafe@gmail.com", Telefono ="999999999", Tipo ="Nacional", Anulado = false }
             );
 
             #endregion

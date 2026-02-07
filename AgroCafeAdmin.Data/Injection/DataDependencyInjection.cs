@@ -1,5 +1,6 @@
 ﻿using AgroCafeAdmin.Data.Repository;
 using AgroCafeAdmin.Data.Repository.Bitacoras;
+using AgroCafeAdmin.Data.Repository.Clientes;
 using AgroCafeAdmin.Data.Repository.Inventario;
 using AgroCafeAdmin.Data.Repository.Productores;
 using AgroCafeAdmin.Data.Repository.Seguridad;
@@ -36,6 +37,7 @@ namespace AgroCafeAdmin.Data.Injection
             services.AddScoped<ICalidadRepository, CalidadRepository>();
             services.AddScoped<IUnidadRepository, UnidadRepository>();
             services.AddScoped<IInventarioRepository, InventarioRepository>();
+            services.AddScoped<IClienteRepository, ClienteRepository>();
             //services.AddScoped<LoteRepository>(); // Ejemplo de otro repo
 
             return services;
