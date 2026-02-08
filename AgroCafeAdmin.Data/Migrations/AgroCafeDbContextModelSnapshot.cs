@@ -22,6 +22,615 @@ namespace AgroCafeAdmin.Data.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
+            modelBuilder.Entity("AgroCafeAdmin.Core.Models.Bitacoras.Bitacora", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("Fecha")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("NombreEvento")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("Notas")
+                        .HasMaxLength(500)
+                        .HasColumnType("nvarchar(500)");
+
+                    b.Property<int>("ParcelaId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Severidad")
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
+
+                    b.Property<string>("Tipo")
+                        .IsRequired()
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ParcelaId");
+
+                    b.ToTable("BIT_Bitacoras", (string)null);
+                });
+
+            modelBuilder.Entity("AgroCafeAdmin.Core.Models.Bitacoras.Labor", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<bool>("Anulado")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Nombre")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("BIT_Labores", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Anulado = false,
+                            Nombre = "Siembra"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Anulado = false,
+                            Nombre = "Fertilización"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Anulado = false,
+                            Nombre = "Poda"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Anulado = false,
+                            Nombre = "Deshierbe"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Anulado = false,
+                            Nombre = "Cosecha"
+                        });
+                });
+
+            modelBuilder.Entity("AgroCafeAdmin.Core.Models.Bitacoras.Plaga", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<bool>("Anulado")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Nombre")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("BIT_Plagas", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Anulado = false,
+                            Nombre = "Roya"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Anulado = false,
+                            Nombre = "Broca"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Anulado = false,
+                            Nombre = "Ojo de Gallo"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Anulado = false,
+                            Nombre = "Minador"
+                        });
+                });
+
+            modelBuilder.Entity("AgroCafeAdmin.Core.Models.Clientes.Cliente", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<bool>("Anulado")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("RazonSocial")
+                        .IsRequired()
+                        .HasMaxLength(150)
+                        .HasColumnType("nvarchar(150)");
+
+                    b.Property<string>("Ruc")
+                        .IsRequired()
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
+
+                    b.Property<string>("Telefono")
+                        .IsRequired()
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
+
+                    b.Property<string>("Tipo")
+                        .IsRequired()
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("CLI_Clientes", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Anulado = false,
+                            Email = "AgroCafe@gmail.com",
+                            RazonSocial = "Consumidor Final",
+                            Ruc = "9999999999",
+                            Telefono = "999999999",
+                            Tipo = "Nacional"
+                        });
+                });
+
+            modelBuilder.Entity("AgroCafeAdmin.Core.Models.Inventario.Calidad", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<bool>("Anulado")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Nombre")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("INV_Calidades", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Anulado = false,
+                            Nombre = "Primera"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Anulado = false,
+                            Nombre = "Segunda"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Anulado = false,
+                            Nombre = "Descarte"
+                        });
+                });
+
+            modelBuilder.Entity("AgroCafeAdmin.Core.Models.Inventario.Lote", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<bool>("Anulado")
+                        .HasColumnType("bit");
+
+                    b.Property<int>("CalidadId")
+                        .HasColumnType("int");
+
+                    b.Property<decimal>("CantidadInicial")
+                        .HasColumnType("decimal(12,2)");
+
+                    b.Property<string>("Codigo")
+                        .IsRequired()
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
+
+                    b.Property<string>("Estado")
+                        .IsRequired()
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
+
+                    b.Property<DateTime>("FechaCosecha")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Notas")
+                        .HasMaxLength(500)
+                        .HasColumnType("nvarchar(500)");
+
+                    b.Property<int>("ParcelaId")
+                        .HasColumnType("int");
+
+                    b.Property<decimal>("StockActual")
+                        .HasColumnType("decimal(12,2)");
+
+                    b.Property<int>("UnidadId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CalidadId");
+
+                    b.HasIndex("UnidadId");
+
+                    b.ToTable("INV_Lotes", (string)null);
+                });
+
+            modelBuilder.Entity("AgroCafeAdmin.Core.Models.Inventario.Movimiento", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<decimal>("Cantidad")
+                        .HasColumnType("decimal(12,2)");
+
+                    b.Property<bool>("EsEntrada")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime>("Fecha")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("LoteId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Motivo")
+                        .IsRequired()
+                        .HasMaxLength(250)
+                        .HasColumnType("nvarchar(250)");
+
+                    b.Property<string>("Tipo")
+                        .IsRequired()
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("LoteId");
+
+                    b.ToTable("INV_Movimientos", (string)null);
+                });
+
+            modelBuilder.Entity("AgroCafeAdmin.Core.Models.Inventario.Unidad", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<bool>("Anulado")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Codigo")
+                        .IsRequired()
+                        .HasMaxLength(10)
+                        .HasColumnType("nvarchar(10)");
+
+                    b.Property<string>("Nombre")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("INV_Unidades", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Anulado = false,
+                            Codigo = "qq",
+                            Nombre = "Quintales"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Anulado = false,
+                            Codigo = "kg",
+                            Nombre = "Kilos"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Anulado = false,
+                            Codigo = "lb",
+                            Nombre = "Libras"
+                        });
+                });
+
+            modelBuilder.Entity("AgroCafeAdmin.Core.Models.Pedidos.DetallePedido", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<decimal>("Cantidad")
+                        .HasColumnType("decimal(12,2)");
+
+                    b.Property<int>("LoteId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("PedidoId")
+                        .HasColumnType("int");
+
+                    b.Property<decimal>("PrecioUnitario")
+                        .HasColumnType("decimal(12,2)");
+
+                    b.Property<decimal>("Subtotal")
+                        .HasColumnType("decimal(12,2)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("PedidoId");
+
+                    b.ToTable("VEN_DETALLES", (string)null);
+                });
+
+            modelBuilder.Entity("AgroCafeAdmin.Core.Models.Pedidos.Pedido", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("ClienteId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Estado")
+                        .IsRequired()
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
+
+                    b.Property<DateTime>("Fecha")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("NumeroFactura")
+                        .IsRequired()
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
+
+                    b.Property<string>("Observaciones")
+                        .HasMaxLength(500)
+                        .HasColumnType("nvarchar(500)");
+
+                    b.Property<decimal>("Total")
+                        .HasColumnType("decimal(12,2)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ClienteId");
+
+                    b.ToTable("VEN_PEDIDOS", (string)null);
+                });
+
+            modelBuilder.Entity("AgroCafeAdmin.Core.Models.Productores.Finca", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<bool>("Anulado")
+                        .HasColumnType("bit");
+
+                    b.Property<decimal>("Hectareas")
+                        .HasColumnType("decimal(10,2)");
+
+                    b.Property<string>("Nombre")
+                        .IsRequired()
+                        .HasMaxLength(150)
+                        .HasColumnType("nvarchar(150)");
+
+                    b.Property<int>("ProductorId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Ubicacion")
+                        .IsRequired()
+                        .HasMaxLength(250)
+                        .HasColumnType("nvarchar(250)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ProductorId");
+
+                    b.ToTable("PRO_Fincas", (string)null);
+                });
+
+            modelBuilder.Entity("AgroCafeAdmin.Core.Models.Productores.Parcela", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<bool>("Anulado")
+                        .HasColumnType("bit");
+
+                    b.Property<decimal>("Area")
+                        .HasColumnType("decimal(10,2)");
+
+                    b.Property<string>("Descripcion")
+                        .HasMaxLength(500)
+                        .HasColumnType("nvarchar(500)");
+
+                    b.Property<int>("FincaId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Nombre")
+                        .IsRequired()
+                        .HasMaxLength(150)
+                        .HasColumnType("nvarchar(150)");
+
+                    b.Property<int>("VariedadId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("FincaId");
+
+                    b.HasIndex("VariedadId");
+
+                    b.ToTable("PRO_Parcelas", (string)null);
+                });
+
+            modelBuilder.Entity("AgroCafeAdmin.Core.Models.Productores.Productor", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<bool>("Anulado")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Apellido")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("Cedula")
+                        .IsRequired()
+                        .HasMaxLength(13)
+                        .HasColumnType("nvarchar(13)");
+
+                    b.Property<string>("Direccion")
+                        .IsRequired()
+                        .HasMaxLength(250)
+                        .HasColumnType("nvarchar(250)");
+
+                    b.Property<string>("Email")
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("Nombre")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("Telefono")
+                        .IsRequired()
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("PRO_Productores", (string)null);
+                });
+
+            modelBuilder.Entity("AgroCafeAdmin.Core.Models.Productores.Variedad", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<bool>("Anulado")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Nombre")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("PRO_Variedades", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Anulado = false,
+                            Nombre = "Arábica"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Anulado = false,
+                            Nombre = "Robusta"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Anulado = false,
+                            Nombre = "Caturra"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Anulado = false,
+                            Nombre = "Borbón"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Anulado = false,
+                            Nombre = "Típica"
+                        });
+                });
+
             modelBuilder.Entity("AgroCafeAdmin.Core.Models.Seguridad.Roles", b =>
                 {
                     b.Property<int>("Id")
@@ -44,6 +653,29 @@ namespace AgroCafeAdmin.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("SEC_Roles", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Anulado = false,
+                            Codigo = "0001",
+                            Nombre = "Administrador"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Anulado = false,
+                            Codigo = "0002",
+                            Nombre = "Productor"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Anulado = false,
+                            Codigo = "0003",
+                            Nombre = "Cliente"
+                        });
                 });
 
             modelBuilder.Entity("AgroCafeAdmin.Core.Models.Seguridad.Usuario", b =>
@@ -54,10 +686,22 @@ namespace AgroCafeAdmin.Data.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<bool>("Activo")
+                    b.Property<bool>("Anulado")
                         .HasColumnType("bit");
 
                     b.Property<string>("Apellido")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Cedula")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Codigo")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Contrasenia")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -83,6 +727,115 @@ namespace AgroCafeAdmin.Data.Migrations
                     b.HasIndex("RolId");
 
                     b.ToTable("SEC_Usuarios", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Anulado = false,
+                            Apellido = "Sistemas",
+                            Cedula = "0924876014001",
+                            Codigo = "Admin",
+                            Contrasenia = "123456",
+                            Email = "AgroCafe@gmail.com",
+                            FechaActualizacion = new DateTime(2026, 2, 4, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            FechaCreacion = new DateTime(2026, 2, 4, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Nombre = "Administrador",
+                            RolId = 1
+                        });
+                });
+
+            modelBuilder.Entity("AgroCafeAdmin.Core.Models.Bitacoras.Bitacora", b =>
+                {
+                    b.HasOne("AgroCafeAdmin.Core.Models.Productores.Parcela", "Parcela")
+                        .WithMany()
+                        .HasForeignKey("ParcelaId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Parcela");
+                });
+
+            modelBuilder.Entity("AgroCafeAdmin.Core.Models.Inventario.Lote", b =>
+                {
+                    b.HasOne("AgroCafeAdmin.Core.Models.Inventario.Calidad", "Calidad")
+                        .WithMany()
+                        .HasForeignKey("CalidadId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("AgroCafeAdmin.Core.Models.Inventario.Unidad", "Unidad")
+                        .WithMany()
+                        .HasForeignKey("UnidadId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Calidad");
+
+                    b.Navigation("Unidad");
+                });
+
+            modelBuilder.Entity("AgroCafeAdmin.Core.Models.Inventario.Movimiento", b =>
+                {
+                    b.HasOne("AgroCafeAdmin.Core.Models.Inventario.Lote", "Lote")
+                        .WithMany()
+                        .HasForeignKey("LoteId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Lote");
+                });
+
+            modelBuilder.Entity("AgroCafeAdmin.Core.Models.Pedidos.DetallePedido", b =>
+                {
+                    b.HasOne("AgroCafeAdmin.Core.Models.Pedidos.Pedido", "Pedido")
+                        .WithMany("Items")
+                        .HasForeignKey("PedidoId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Pedido");
+                });
+
+            modelBuilder.Entity("AgroCafeAdmin.Core.Models.Pedidos.Pedido", b =>
+                {
+                    b.HasOne("AgroCafeAdmin.Core.Models.Clientes.Cliente", "Cliente")
+                        .WithMany()
+                        .HasForeignKey("ClienteId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Cliente");
+                });
+
+            modelBuilder.Entity("AgroCafeAdmin.Core.Models.Productores.Finca", b =>
+                {
+                    b.HasOne("AgroCafeAdmin.Core.Models.Productores.Productor", "Productor")
+                        .WithMany()
+                        .HasForeignKey("ProductorId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Productor");
+                });
+
+            modelBuilder.Entity("AgroCafeAdmin.Core.Models.Productores.Parcela", b =>
+                {
+                    b.HasOne("AgroCafeAdmin.Core.Models.Productores.Finca", "Finca")
+                        .WithMany()
+                        .HasForeignKey("FincaId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("AgroCafeAdmin.Core.Models.Productores.Variedad", "Variedad")
+                        .WithMany()
+                        .HasForeignKey("VariedadId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Finca");
+
+                    b.Navigation("Variedad");
                 });
 
             modelBuilder.Entity("AgroCafeAdmin.Core.Models.Seguridad.Usuario", b =>
@@ -94,6 +847,11 @@ namespace AgroCafeAdmin.Data.Migrations
                         .IsRequired();
 
                     b.Navigation("Rol");
+                });
+
+            modelBuilder.Entity("AgroCafeAdmin.Core.Models.Pedidos.Pedido", b =>
+                {
+                    b.Navigation("Items");
                 });
 #pragma warning restore 612, 618
         }

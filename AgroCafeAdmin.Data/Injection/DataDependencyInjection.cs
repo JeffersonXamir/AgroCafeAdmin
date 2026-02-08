@@ -1,0 +1,48 @@
+﻿using AgroCafeAdmin.Data.Repository;
+using AgroCafeAdmin.Data.Repository.Bitacoras;
+using AgroCafeAdmin.Data.Repository.Clientes;
+using AgroCafeAdmin.Data.Repository.Inventario;
+using AgroCafeAdmin.Data.Repository.Pedidos;
+using AgroCafeAdmin.Data.Repository.Productores;
+using AgroCafeAdmin.Data.Repository.Seguridad;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace AgroCafeAdmin.Data.Injection
+{
+    public static class DataDependencyInjection
+    {
+        public static IServiceCollection AddDataLayer(this IServiceCollection services, IConfiguration configuration)
+        {
+            // ... configuración del DbContext ...
+
+            // Registro de la clase genérica (si la sigues usando)
+            //services.AddScoped<GenericRepository>();
+
+            // Registro directo de repositorios específicos
+            services.AddScoped<IAutorizacionRepository, AutorizacionRepository>();
+            services.AddScoped<IUsuarioRepository, UsuarioRepository>();
+            services.AddScoped<IRolesRepository, RolesRepository>();
+            services.AddScoped<IProductorRepository, ProductorRepository>();
+            services.AddScoped<IFincaRepository, FincaRepository>();
+            services.AddScoped<IVariedadRepository, VariedadRepository>();
+            services.AddScoped<IParcelaRepository, ParcelaRepository>();
+            services.AddScoped<ILaborRepository, LaborRepository>();
+            services.AddScoped<IPlagasRepository, PlagasRepository>();
+            services.AddScoped<IBitacoraRepository, BitacoraRepository>();
+            services.AddScoped<ICalidadRepository, CalidadRepository>();
+            services.AddScoped<IUnidadRepository, UnidadRepository>();
+            services.AddScoped<IInventarioRepository, InventarioRepository>();
+            services.AddScoped<IClienteRepository, ClienteRepository>();
+            services.AddScoped<IPedidoRepository, PedidoRepository>();
+            //services.AddScoped<LoteRepository>(); // Ejemplo de otro repo
+
+            return services;
+        }
+    }
+}

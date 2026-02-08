@@ -9,12 +9,15 @@ namespace AgroCafeAdmin.Core.Models.Seguridad
     public class Usuario
     {
         public int Id { get; set; }
+        public string Codigo { get; set; } = string.Empty;
         public string Nombre { get; set; } = string.Empty;
         public string Apellido { get; set; } = string.Empty;
         public string Email { get; set; } = string.Empty;
+        public string Cedula { get; set; } = string.Empty;
+        public string Contrasenia { get; set; } = string.Empty;
         public int RolId { get; set; }
         public Roles Rol { get; set; }
-        public bool Activo { get; set; } = true;
+        public bool Anulado { get; set; } = true;
         public DateTime FechaCreacion { get; set; } = DateTime.UtcNow;
         public DateTime? FechaActualizacion { get; set; }
     }
