@@ -17,6 +17,11 @@ namespace AgroCafeAdmin.WebApi.Controllers.Pedidos
         private readonly IPedidoService _service;
         public PedidoController(IPedidoService service) { _service = service; }
 
+        /// <summary>
+        /// Metodo para obtener el historial de pedidos y ventas realizadas ["TRX_GET_ALL_PEDIDOS"]
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
         [HttpPost]
         [Route("[action]")]
         public async Task<IActionResult> GetPedidosTransaccion([FromBody] PedidoRequest request)
@@ -27,6 +32,11 @@ namespace AgroCafeAdmin.WebApi.Controllers.Pedidos
             return Ok(new ApiResponse<List<Pedido>> { Data = result.Data, Message = result.Mensaje });
         }
 
+        /// <summary>
+        /// Metodo para registrar una nueva venta o anular una existente ["TRX_INSERT_PEDIDO", "TRX_ANULAR_PEDIDO"]
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
         [HttpPost]
         [Route("[action]")]
         public async Task<IActionResult> SetPedidoTransaccion([FromBody] PedidoRequest request)

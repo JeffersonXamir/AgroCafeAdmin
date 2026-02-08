@@ -18,7 +18,11 @@ namespace AgroCafeAdmin.API.Controllers.Seguridad
             _authService = authService;
         }
 
-
+        /// <summary>
+        /// Metodo para obtener token de autorizacion para un usuario. ["TRX_VALIDAR_USUARIO"]
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
         [HttpPost]
         [Route("[action]")]
         public async Task<IActionResult> VerificarAutorizacionAsync([FromBody] UsuarioRequest request)

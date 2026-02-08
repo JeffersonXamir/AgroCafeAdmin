@@ -17,6 +17,11 @@ namespace AgroCafeAdmin.WebApi.Controllers.Clientes
         private readonly IClienteService _service;
         public ClienteController(IClienteService service) { _service = service; }
 
+        /// <summary>
+        /// Metodo para obtener la lista de clientes activos o por filtro ["TRX_GET_ALL_CLIENTES", "TRX_GET_CLIENTE_ID"]
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
         [HttpPost]
         [Route("[action]")]
         public async Task<IActionResult> GetClientesTransaccion([FromBody] ClienteRequest request)
@@ -28,6 +33,11 @@ namespace AgroCafeAdmin.WebApi.Controllers.Clientes
             return Ok(new ApiResponse<List<Cliente>> { Data = result.Data, Message = result.Mensaje });
         }
 
+        /// <summary>
+        /// Metodo para crear, modificar o eliminar logicamente un cliente ["TRX_INSERT_CLIENTE", "TRX_UPDATE_CLIENTE", "TRX_DELETE_CLIENTE"]
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
         [HttpPost]
         [Route("[action]")]
         public async Task<IActionResult> SetClienteTransaccion([FromBody] ClienteRequest request)

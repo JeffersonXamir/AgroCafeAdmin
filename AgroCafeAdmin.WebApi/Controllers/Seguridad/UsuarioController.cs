@@ -22,9 +22,10 @@ namespace AgroCafeAdmin.WebApi.Controllers.Seguridad
         }
 
         /// <summary>
-        /// Obtiene todos los usuarios por transaccion
+        /// Metodo para obtener la lista de usuarios del sistema ["TRX_GET_ALL_USUARIOS", "TRX_GET_USUARIO_ID"]
         /// </summary>
-        /// <returns>Lista de carros</returns>
+        /// <param name="request"></param>
+        /// <returns></returns>
         [HttpPost]
         [Route("[action]")]
         public async Task<IActionResult> GetUsuarioTransaccion([FromBody] UsuarioRequest request)
@@ -70,9 +71,10 @@ namespace AgroCafeAdmin.WebApi.Controllers.Seguridad
         }
 
         /// <summary>
-        /// Obtiene todos los usuarios por transaccion
+        /// Metodo para administrar usuarios (Crear, Editar, Eliminar, Activar) ["TRX_Insert_Usuario", "TRX_Update_Usuario", "TRX_Delete_Usuario", "TRX_Active_Usuario"]
         /// </summary>
-        /// <returns>Lista de carros</returns>
+        /// <param name="request"></param>
+        /// <returns></returns>
         [HttpPost]
         [Route("[action]")]
         public async Task<IActionResult> SetUsuarioTransaccion([FromBody] UsuarioRequest request)

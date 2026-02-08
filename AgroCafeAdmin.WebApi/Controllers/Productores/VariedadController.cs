@@ -17,6 +17,11 @@ namespace AgroCafeAdmin.WebApi.Controllers.Productores
         private readonly IVariedadService _service;
         public VariedadController(IVariedadService service) { _service = service; }
 
+        /// <summary>
+        /// Metodo para obtener el catalogo de variedades de cafe ["TRX_GET_ALL_VARIEDADES"]
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
         [HttpPost]
         [Route("[action]")]
         public async Task<IActionResult> GetVariedadesTransaccion([FromBody] VariedadRequest request)
@@ -27,6 +32,11 @@ namespace AgroCafeAdmin.WebApi.Controllers.Productores
             return Ok(new ApiResponse<List<Variedad>> { Data = result.Data, Message = result.Mensaje });
         }
 
+        /// <summary>
+        /// Metodo para administrar las variedades de cafe ["TRX_INSERT_VARIEDAD", "TRX_UPDATE_VARIEDAD", "TRX_DELETE_VARIEDAD"]
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
         [HttpPost]
         [Route("[action]")]
         public async Task<IActionResult> SetVariedadTransaccion([FromBody] VariedadRequest request)

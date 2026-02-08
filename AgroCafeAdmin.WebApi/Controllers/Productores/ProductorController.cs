@@ -17,6 +17,11 @@ namespace AgroCafeAdmin.WebApi.Controllers.Productores
         private readonly IProductorService _service;
         public ProductorController(IProductorService service) { _service = service; }
 
+        /// <summary>
+        /// Metodo para obtener el directorio de productores ["TRX_GET_ALL_PRODUCTORES", "TRX_GET_PRODUCTOR_ID"]
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
         [HttpPost]
         [Route("[action]")]
         public async Task<IActionResult> GetProductoresTransaccion([FromBody] ProductorRequest request)
@@ -29,6 +34,11 @@ namespace AgroCafeAdmin.WebApi.Controllers.Productores
             return Ok(new ApiResponse<List<Productor>> { Data = result.Data, Message = result.Mensaje });
         }
 
+        /// <summary>
+        /// Metodo para gestionar la informacion de los productores ["TRX_INSERT_PRODUCTOR", "TRX_UPDATE_PRODUCTOR", "TRX_DELETE_PRODUCTOR"]
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
         [HttpPost]
         [Route("[action]")]
         public async Task<IActionResult> SetProductorTransaccion([FromBody] ProductorRequest request)

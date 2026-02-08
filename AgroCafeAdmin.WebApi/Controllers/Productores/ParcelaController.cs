@@ -17,6 +17,11 @@ namespace AgroCafeAdmin.WebApi.Controllers.Productores
         private readonly IParcelaService _service;
         public ParcelaController(IParcelaService service) { _service = service; }
 
+        /// <summary>
+        /// Metodo para obtener las parcelas asociadas a las fincas ["TRX_GET_ALL_PARCELAS"]
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
         [HttpPost]
         [Route("[action]")]
         public async Task<IActionResult> GetParcelasTransaccion([FromBody] ParcelaRequest request)
@@ -27,6 +32,11 @@ namespace AgroCafeAdmin.WebApi.Controllers.Productores
             return Ok(new ApiResponse<List<Parcela>> { Data = result.Data, Message = result.Mensaje });
         }
 
+        /// <summary>
+        /// Metodo para administrar las parcelas (Crear, Editar, Borrar) ["TRX_INSERT_PARCELA", "TRX_UPDATE_PARCELA", "TRX_DELETE_PARCELA"]
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
         [HttpPost]
         [Route("[action]")]
         public async Task<IActionResult> SetParcelaTransaccion([FromBody] ParcelaRequest request)

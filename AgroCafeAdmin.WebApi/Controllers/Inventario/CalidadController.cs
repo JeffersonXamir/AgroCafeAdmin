@@ -19,6 +19,11 @@ namespace AgroCafeAdmin.WebApi.Controllers.Inventario
         private readonly ICalidadService _service;
         public CalidadController(ICalidadService service) { _service = service; }
 
+        /// <summary>
+        /// Metodo para obtener el catalogo de calidades de cafe ["TRX_GET_CALIDADES"]
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
         [HttpPost]
         [Route("[action]")]
         public async Task<IActionResult> GetCalidadTransaccion([FromBody] CalidadRequest request)

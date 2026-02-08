@@ -19,6 +19,11 @@ namespace AgroCafeAdmin.WebApi.Controllers.Inventario
         private readonly IUnidadService _service;
         public UnidadController(IUnidadService service) { _service = service; }
 
+        /// <summary>
+        /// Metodo para obtener el catalogo de unidades de medida ["TRX_GET_UNIDADES"]
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
         [HttpPost]
         [Route("[action]")]
         public async Task<IActionResult> GetUnidadTransaccion([FromBody] UnidadRequest request)

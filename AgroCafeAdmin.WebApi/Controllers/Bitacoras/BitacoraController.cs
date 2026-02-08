@@ -17,6 +17,11 @@ namespace AgroCafeAdmin.WebApi.Controllers.Bitacoras
         private readonly IBitacoraService _service;
         public BitacoraController(IBitacoraService service) { _service = service; }
 
+        /// <summary>
+        /// Metodo para obtener el historial de registros de la bitacora ["TRX_GET_ALL_BITACORA"]
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
         [HttpPost]
         [Route("[action]")]
         public async Task<IActionResult> GetBitacorasTransaccion([FromBody] BitacoraRequest request)
@@ -27,6 +32,11 @@ namespace AgroCafeAdmin.WebApi.Controllers.Bitacoras
             return Ok(new ApiResponse<List<Bitacora>> { Data = result.Data, Message = result.Mensaje });
         }
 
+        /// <summary>
+        /// Metodo para registrar, actualizar o eliminar un evento en la bitacora ["TRX_INSERT_BITACORA", "TRX_UPDATE_BITACORA", "TRX_DELETE_BITACORA"]
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
         [HttpPost]
         [Route("[action]")]
         public async Task<IActionResult> SetBitacoraTransaccion([FromBody] BitacoraRequest request)

@@ -17,6 +17,11 @@ namespace AgroCafeAdmin.WebApi.Controllers.Bitacoras
         private readonly IPlagasService _service;
         public PlagaController(IPlagasService service) { _service = service; }
 
+        /// <summary>
+        /// Metodo para obtener el catalogo de plagas registradas ["TRX_GET_ALL_PLAGAS"]
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
         [HttpPost]
         [Route("[action]")]
         public async Task<IActionResult> GetPlagasTransaccion([FromBody] PlagaRequest request)

@@ -17,6 +17,11 @@ namespace AgroCafeAdmin.WebApi.Controllers.Labors
         private readonly ILaborService _service;
         public LaborController(ILaborService service) { _service = service; }
 
+        /// <summary>
+        /// Metodo para obtener el catalogo de labores disponibles ["TRX_GET_ALL_LABORES"]
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
         [HttpPost]
         [Route("[action]")]
         public async Task<IActionResult> GetLaborTransaccion([FromBody] LaborRequest request)

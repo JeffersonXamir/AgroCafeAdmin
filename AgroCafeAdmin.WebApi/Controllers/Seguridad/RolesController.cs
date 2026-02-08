@@ -22,9 +22,10 @@ namespace AgroCafeAdmin.WebApi.Controllers.Seguridad
         }
 
         /// <summary>
-        /// Obtiene todos los usuarios por transaccion
+        /// Metodo para obtener el listado de roles del sistema ["TRX_GET_ALL_ROLES"]
         /// </summary>
-        /// <returns>Lista de carros</returns>
+        /// <param name="request"></param>
+        /// <returns></returns>
         [HttpPost]
         [Route("[action]")]
         public async Task<IActionResult> GetRolesTransaccion([FromBody] RolesRequest request)
@@ -70,9 +71,10 @@ namespace AgroCafeAdmin.WebApi.Controllers.Seguridad
         }
 
         /// <summary>
-        /// Obtiene todos los usuarios por transaccion
+        /// Metodo para crear o modificar roles de usuario ["TRX_INSERT_ROL", "TRX_UPDATE_ROL"]
         /// </summary>
-        /// <returns>Lista de carros</returns>
+        /// <param name="request"></param>
+        /// <returns></returns>
         [HttpPost]
         [Route("[action]")]
         public async Task<IActionResult> SetRolesTransaccion([FromBody] RolesRequest request)

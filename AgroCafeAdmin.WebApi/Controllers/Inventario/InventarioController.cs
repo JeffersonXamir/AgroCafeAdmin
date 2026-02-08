@@ -18,6 +18,11 @@ namespace AgroCafeAdmin.WebApi.Controllers.Inventario
         private readonly IInventarioService _service;
         public InventarioController(IInventarioService service) { _service = service; }
 
+        /// <summary>
+        /// Metodo para obtener el listado de lotes en inventario ["TRX_GET_ALL_LOTES"]
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
         [HttpPost]
         [Route("[action]")]
         public async Task<IActionResult> GetLotesTransaccion([FromBody] LoteRequest request)
@@ -28,6 +33,11 @@ namespace AgroCafeAdmin.WebApi.Controllers.Inventario
             return Ok(new ApiResponse<List<Lote>> { Data = result.Data, Message = result.Mensaje });
         }
 
+        /// <summary>
+        /// Metodo para registrar un nuevo lote a partir de una cosecha ["TRX_INSERT_COSECHA"]
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
         [HttpPost]
         [Route("[action]")]
         public async Task<IActionResult> SetLoteTransaccion([FromBody] LoteRequest request)
@@ -38,6 +48,11 @@ namespace AgroCafeAdmin.WebApi.Controllers.Inventario
             return Ok(new ApiResponse<Lote> { Data = result.Data, Message = result.Mensaje });
         }
 
+        /// <summary>
+        /// Metodo para obtener el historial de movimientos (Kardex) del inventario ["TRX_GET_ALL_MOVIMIENTOS"]
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
         [HttpPost]
         [Route("[action]")]
         public async Task<IActionResult> GetMovimientosTransaccion([FromBody] BaseRequest request)
